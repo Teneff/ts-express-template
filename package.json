@@ -1,0 +1,63 @@
+{
+  "name": "@teneff/ts-express-template",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Microservice template with TypeScript & Express",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "prod": "node dist/index.js",
+    "build": "tsc",
+    "clean": "rimraf dist/",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json src",
+    "test": "jest",
+    "docker:build": "docker build -t teneff-microservice -f deploy/Dockerfile .",
+    "docker:exec": "docker run -it teneff-microservice ",
+    "docker:shell": "yarn run docker:exec sh",
+    "docker:run": "docker run -d -p 3000:3000 teneff-microservice"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Teneff/ts-express-template.git"
+  },
+  "keywords": [
+    "Microservice",
+    "http",
+    "express",
+    "typescript"
+  ],
+  "author": "Stefan Tenev <stefan@teneff.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/jest": "^29.1.0",
+    "@types/node": "^18.7.23",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^27.0.4",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.1.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "transform": {
+      "^.+\\.(ts|tsx)$": [
+        "ts-jest",
+        {
+          "tsConfig": "tsconfig.test.json"
+        }
+      ]
+    }
+  }
+}
